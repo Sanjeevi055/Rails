@@ -1,15 +1,31 @@
-# DevOps 
+Rails application on Docker
 
-Sample Rails App 
 
-To run the rails application in local
+Dockerfile explanation:
 
-1. Install ruby  https://linuxize.com/post/how-to-install-ruby-on-ubuntu-20-04/#installing-ruby-using-rvm
-2. Goto the project location in terminal
-3. Run the below command 
-   > bundle install 
-4. Configure the database settings in the file config/database.yml
-5. run the below command to create database 
-   > rake db:create
-6. Start the application server by using the following command.
-   > rails s 
+Firstly i used ruby on alpine and installed rails and nodejs and other dependencies. 
+
+As a second step i copied Gemfile, Gemfile.lock, Rakefile, yarn.lock into the image. 
+
+Then i installed yarn and run yarn install
+
+After yarn i used bundle install to install dependencies. 
+
+Lastly i used rails s as runtime command. 
+
+Explanation of docker-compose-file:
+
+I have two services called db and web.
+
+For db service i use postgres:alphine image 
+I am using postgresql directory as host directory of database and /var/lib/postgres/data as postgres directory insdie docker.
+I haven't been able to use token as crendential instead of password as a environment variable.
+
+For web service I am running whatever the Dockerfile built and created for me with the rails s command binding to 0.0.0.0 and port 3000. 
+
+
+Issues i couldn't able to solve:
+
+I am able to get the docker-compose up without a problem but i think i haven't configured database correctly.
+I am getting this page instead of expected rails home page. 
+
