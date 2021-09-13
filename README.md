@@ -1,7 +1,7 @@
-Rails application on Docker
+**Rails application on Docker**
 
 
-Dockerfile explanation:
+**Dockerfile explanation:**
 
 Firstly i used ruby on alpine and installed rails and nodejs and other dependencies. 
 
@@ -13,7 +13,7 @@ After yarn i used bundle install to install dependencies.
 
 Lastly i used rails s as runtime command. 
 
-Explanation of docker-compose-file:
+**Explanation of docker-compose-file:**
 
 I have two services called db and web.
 
@@ -23,9 +23,9 @@ I haven't been able to use token as crendential instead of password as a environ
 
 For web service I am running whatever the Dockerfile built and created for me with the rails s command binding to 0.0.0.0 and port 3000. 
 
-
-Issues i couldn't able to solve:
+**Issues i couldn't able to solve:**
 
 I am able to get the docker-compose up without a problem but i think i haven't configured database correctly.
 I am getting this page instead of expected rails home page. 
+![Screenshot from 2021-09-12 21-23-50](https://user-images.githubusercontent.com/90387133/133030521-863029c6-ac72-4fa6-9f90-15a0925fdc46.png)
 
