@@ -1,7 +1,8 @@
 **Steps to run rails application on docker:**
 
+Requirements: Docker and docker-compose need to be installed. 
 
-Once docker and docker-compose are installed in your system.
+If you already have a rails project, copy Dockerfile and docker-compose.file to your project folder and follow the steps below. 
 
 **Step 1:**
 
