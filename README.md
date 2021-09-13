@@ -1,32 +1,30 @@
-![Screenshot from 2021-09-12 21-23-31](https://user-images.githubusercontent.com/90387133/133030582-e83dbf25-45b1-4894-a824-d20950c74951.png)
-**Rails application on Docker**
+**Steps to run rails application on docker:**
 
 
-**Dockerfile explanation:**
+Once docker and docker-compose are installed in your system.
 
-Firstly i used ruby on alpine and installed rails and nodejs and other dependencies. 
+**Step 1:**
 
-As a second step i copied Gemfile, Gemfile.lock, Rakefile, yarn.lock into the image. 
+To run the rails for the first time, the first command to run is “docker-compose build” inside of a project directory. 
 
-Then i installed yarn and run yarn install
+Explanation: This is will install all the necessary setup needed say ruby, rails, Postgres, nodejs and all the other dependencies. 
 
-After yarn i used bundle install to install dependencies. 
+**Step 2:**
 
-Lastly i used rails s as runtime command. 
+Now project setup with all the dependencies installed and ready to create a database. 
 
-**Explanation of docker-compose-file:**
+To create a database run this command “docker-compose run web rake db:create” 
 
-I have two services called db and web.
+Note: To change the name of the database or change the username and password, move on to database.yml file inside the config folder.
 
-For db service i use postgres:alphine image 
-I am using postgresql directory as host directory of database and /var/lib/postgres/data as postgres directory insdie docker.
-I haven't been able to use token as crendential instead of password as a environment variable.
+Now that database is created, we need to start both application container rails and database container Postgres together. 
 
-For web service I am running whatever the Dockerfile built and created for me with the rails s command binding to 0.0.0.0 and port 3000. 
+**Step 3:**
 
-**Issues i couldn't able to solve:**
+To run both the containers, run this command “docker-compose up -d” 
+Note: To see the running logs use docker-compose up
 
-I am able to get the docker-compose up without a problem but i think i haven't configured database correctly.
-I am getting this page instead of expected rails home page. 
-![Screenshot from 2021-09-12 21-23-50](https://user-images.githubusercontent.com/90387133/133030521-863029c6-ac72-4fa6-9f90-15a0925fdc46.png)
+
+Now your application is running on port 3000. Use http://localhost:3000 or http://yourip:3000
+
 
